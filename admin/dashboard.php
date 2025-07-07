@@ -33,7 +33,7 @@ require_admin(); // Apenas administradores podem acessar
         <hr>
 
         <div id="questions-list"></div>
-        <a href="logout.php">Sair</a>
+        <a href="../ajax/logout.php">Sair</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
