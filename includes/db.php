@@ -1,7 +1,7 @@
 <?php
 // Definições de conexão com o banco de dados
 $host = 'localhost'; 
-$db   = 'quiz_ifsc';
+$db   = 'QUIZ_IFSC';
 $user = 'root';
 $pass = '';
 $charset = 'utf8mb4';

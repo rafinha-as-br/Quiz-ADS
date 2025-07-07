@@ -1,5 +1,7 @@
 -- database/init.sql
 
+CREATE DATABASE QUIZ_IFSC;
+
 -- Desabilita a verificação de chaves estrangeiras temporariamente para evitar erros
 -- durante a criação ou reset do banco de dados, se as tabelas existirem.
 SET FOREIGN_KEY_CHECKS = 0;
