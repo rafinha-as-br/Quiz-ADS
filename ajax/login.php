@@ -1,5 +1,6 @@
 <?php
 // ajax/login.php
+session_start();
 
 // Define que a resposta será em JSON
 header('Content-Type: application/json');
@@ -9,6 +10,7 @@ require_once '../includes/auth.php';
 
 // Garante que a requisição é um POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     // Recebe os dados do corpo da requisição POST
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = filter_input(INPUT_POST, 'password', FILTER_UNSAFE_RAW); // Senha em texto puro

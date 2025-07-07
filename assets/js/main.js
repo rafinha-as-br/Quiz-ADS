@@ -1,3 +1,7 @@
+console.log("main.js carregado com sucesso");
+
+
+
 // assets/js/main.js
 $(document).ready(function() {
     $('#show-login').click(function() {
@@ -12,20 +16,28 @@ $(document).ready(function() {
 
     // LOGIN
     $('#form-login').submit(function(e) {
-        e.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: 'ajax/login.php',
-            data: $(this).serialize(),
-            success: function(response) {
-                let res = JSON.parse(response);
-                $('#login-msg').text(res.message);
-                if (res.success) {
-                    setTimeout(() => window.location.href = res.redirect, 1000);
-                }
+    e.preventDefault();
+    console.log("Formulário de login enviado via JS");
+
+
+    $.ajax({
+        type: 'POST',
+        url: 'ajax/login.php',
+        data: $(this).serialize(),
+        dataType: 'json',
+        success: function(res) {
+            $('#login-msg').text(res.message);
+            if (res.success) {
+                setTimeout(() => window.location.href = res.redirect, 1000);
             }
-        });
+        },
+        error: function(xhr, status, error) {
+            console.error("Erro na requisição:", status, error);
+            $('#login-msg').text("Erro ao tentar logar.");
+        }
     });
+});
+
 
     // REGISTRO
     $('#form-register').submit(function(e) {
