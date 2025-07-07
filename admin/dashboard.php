@@ -25,4 +25,18 @@ require_admin(); // Apenas administradores podem acessar
             <input type="text" name="option4" placeholder="Opção 4" required><br>
 
             <label for="correct">Número da opção correta (1-4):</label><br>
-            <input type="number" nam
+            <input type="number" name="correct" min="1" max="4" required><br><br>
+
+            <button type="submit">Adicionar Pergunta</button>
+        </form>
+
+        <hr>
+
+        <div id="questions-list"></div>
+        <a href="logout.php">Sair</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="../assets/js/admin.js"></script>
+</body>
+</html>

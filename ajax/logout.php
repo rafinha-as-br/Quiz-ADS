@@ -1,15 +1,31 @@
 <?php
 // ajax/logout.php
 
-// Define que a resposta será em JSON
-header('Content-Type: application/json');
+// (apenas para desenvolvimento - remova em produção)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-// Inclui o arquivo com as funções de autenticação e a conexão com o DB
+session_start();
 require_once '../includes/auth.php';
 
-// Chama a função de logout
+// Realiza logout
 logoutUser();
 
-// Retorna uma resposta de sucesso
-echo json_encode(['success' => true, 'message' => 'Sessão encerrada com sucesso!', 'redirect' => 'index.php']);
-?>
+// Detecta se é uma requisição AJAX (fetch, jQuery, etc.)
+$isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 
+          strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+
+if ($isAjax) {
+    // Resposta para chamada AJAX
+    header('Content-Type: application/json');
+    echo json_encode([
+        'success' => true,
+        'message' => 'Sessão encerrada com sucesso!',
+        'redirect' => 'index.php'
+    ]);
+} else {
+    // Acesso direto via navegador → redireciona
+    header('Location: ../index.php');
+    exit;
+}

@@ -26,9 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Se o login foi bem-sucedido e é um admin, pode adicionar uma flag para redirecionamento
     if ($result['success'] && $_SESSION['is_admin']) {
-        $result['redirect'] = 'admin_dashboard.php'; // Ou para onde o admin deve ir
+        $result['redirect'] = 'admin/dashboard.php'; // Ou para onde o admin deve ir
     } elseif ($result['success']) {
-        $result['redirect'] = 'quiz_page.php'; // Ou para onde o usuário comum deve ir
+        $result['redirect'] = 'ajax/get_quiz.php'; // Ou para onde o usuário comum deve ir
     }
 
     // Retorna a resposta em JSON
