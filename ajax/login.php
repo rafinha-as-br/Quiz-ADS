@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result['success'] && $_SESSION['is_admin']) {
         $result['redirect'] = 'admin/dashboard.php'; // Ou para onde o admin deve ir
     } elseif ($result['success']) {
-        $result['redirect'] = 'ajax/get_quiz.php'; // Ou para onde o usuário comum deve ir
+        $result['redirect'] = 'user/dashboard.php'; // Ou para onde o usuário comum deve ir
     }
 
     // Retorna a resposta em JSON

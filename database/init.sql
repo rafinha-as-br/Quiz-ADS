@@ -23,13 +23,15 @@ SET FOREIGN_KEY_CHECKS = 1;
 -- Armazena informações de administradores e usuários comuns.
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL UNIQUE,       -- Email do usuário (login), deve ser único
-    password VARCHAR(255) NOT NULL,           -- Hash da senha (NUNCA armazene senhas em texto puro!)
-    is_admin BOOLEAN DEFAULT FALSE,           -- TRUE para administradores, FALSE para usuários comuns
-    score DECIMAL(5, 2) DEFAULT 0.00,         -- Porcentagem de acertos na última tentativa do quiz
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    is_admin BOOLEAN DEFAULT FALSE,
+    score DECIMAL(5,2),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+);
+
 
 -- 2. Tabela de Perguntas (questions)
 -- Armazena o texto de cada pergunta do quiz.
